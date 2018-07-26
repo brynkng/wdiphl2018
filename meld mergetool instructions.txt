@@ -1,0 +1,28 @@
+Download at https://yousseb.github.io/meld/
+
+Edit ~/.gitconfig and add the following:
+
+`
+
+[diff]
+  tool = meld
+[difftool]
+  prompt = false
+[difftool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
+[merge]
+  tool = meld
+[mergetool]
+  prompt = false
+[mergetool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
+
+`
+
+
+
+To stop .orig files from being created run:
+
+git config --global mergetool.keepBackup false
